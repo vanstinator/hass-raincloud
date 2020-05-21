@@ -1,5 +1,5 @@
 {
-  "name": "raincloud",
+  "name": "Melnor Raincloud",
   "render_readme": true,
   "domains": ["binary_sensor", "sensor", "switch"],
   "homeassistant": "0.110.0",
