@@ -1,0 +1,7 @@
+{
+  "name": "raincloud",
+  "render_readme": true,
+  "domains": ["binary_sensor", "sensor", "switch"],
+  "homeassistant": "0.110.0",
+  "iot_class": "Cloud Polling"
+}
