@@ -28,11 +28,17 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     sensors = []
     for sensor_type in config.get(CONF_MONITORED_CONDITIONS):
         if sensor_type == "battery":
-            sensors.append(RainCloudSensor(raincloud.controller.faucet, sensor_type))
+            for controller in raincloud.controllers:                
+                for faucet in controller.faucets:
+                    sensors.append(RainCloudSensor(faucet, sensor_type))
+
         else:
-            # create a sensor for each zone managed by a faucet
-            for zone in raincloud.controller.faucet.zones:
-                sensors.append(RainCloudSensor(zone, sensor_type))
+            # create a sensor for each zone managed by controller and faucet
+            for controller in raincloud.controllers:
+                for faucet in controller.faucets:
+                    for zone in faucet.zones:
+                        sensors.append(RainCloudSensor(zone, sensor_type))
+
 
     add_entities(sensors, True)
     return True
