@@ -39,8 +39,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     sensors = []
     for sensor_type in config.get(CONF_MONITORED_CONDITIONS):
         # create a sensor for each zone managed by faucet
-        for zone in raincloud.controller.faucet.zones:
-            sensors.append(RainCloudSwitch(default_watering_timer, zone, sensor_type))
+        for controller in raincloud.controllers:
+            for faucet in controller.faucets:
+                for zone in faucet.zones:
+                    sensors.append(RainCloudSwitch(default_watering_timer, zone, sensor_type))
 
     add_entities(sensors, True)
 
@@ -61,7 +63,7 @@ class RainCloudSwitch(RainCloudEntity, SwitchEntity):
     def turn_on(self, **kwargs):
         """Turn the device on."""
         if self._sensor_type == "manual_watering":
-            self.data.watering_time = self._default_watering_timer
+            self.data.manual_watering = self._default_watering_timer
         elif self._sensor_type == "auto_watering":
             self.data.auto_watering = True
         self._state = True
@@ -69,7 +71,7 @@ class RainCloudSwitch(RainCloudEntity, SwitchEntity):
     def turn_off(self, **kwargs):
         """Turn the device off."""
         if self._sensor_type == "manual_watering":
-            self.data.watering_time = "off"
+            self.data.manual_watering = "off"
         elif self._sensor_type == "auto_watering":
             self.data.auto_watering = False
         self._state = False
@@ -78,7 +80,7 @@ class RainCloudSwitch(RainCloudEntity, SwitchEntity):
         """Update device state."""
         _LOGGER.debug("Updating RainCloud switch: %s", self._name)
         if self._sensor_type == "manual_watering":
-            self._state = bool(self.data.watering_time)
+            self._state = bool(self.data.manual_watering)
         elif self._sensor_type == "auto_watering":
             self._state = self.data.auto_watering
 

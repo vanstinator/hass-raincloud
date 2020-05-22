@@ -27,15 +27,20 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     sensors = []
     for sensor_type in config.get(CONF_MONITORED_CONDITIONS):
         if sensor_type == "status":
-            sensors.append(RainCloudBinarySensor(raincloud.controller, sensor_type))
-            sensors.append(
-                RainCloudBinarySensor(raincloud.controller.faucet, sensor_type)
-            )
+            for controller in raincloud.controllers:
+                sensors.append(RainCloudBinarySensor(controller, sensor_type))
+                
+                for faucet in controller.faucets:
+                    sensors.append(
+                        RainCloudBinarySensor(faucet, sensor_type)
+                    )
 
         else:
-            # create a sensor for each zone managed by faucet
-            for zone in raincloud.controller.faucet.zones:
-                sensors.append(RainCloudBinarySensor(zone, sensor_type))
+            # create a sensor for each zone managed by controller and faucet
+            for controller in raincloud.controllers:
+                for faucet in controller.faucets:
+                    for zone in faucet.zones:
+                        sensors.append(RainCloudBinarySensor(zone, sensor_type))
 
     add_entities(sensors, True)
     return True
