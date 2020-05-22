@@ -6,6 +6,17 @@
 
 ![HACS Validation](https://github.com/vanstinator/hass-raincloud/workflows/HACS%20Validation/badge.svg?branch=master) ![Hassfest Validation](https://github.com/vanstinator/hass-raincloud/workflows/Hassfest%20Validation/badge.svg?branch=master)
 
+<!-- ### Stats
+![GitHub All Releases](https://img.shields.io/github/downloads/vanstinator/hass-raincloud/total?color=orange&label=Total%20downloads&style=for-the-badge) -->
+
+##### Stable
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/vanstinator/hass-raincloud?style=for-the-badge) ![GitHub Release Date](https://img.shields.io/github/release-date/vanstinator/hass-raincloud?style=for-the-badge) ![GitHub Releases](https://img.shields.io/github/downloads/vanstinator/hass-raincloud/latest/total?color=purple&label=%20release%20Downloads&style=for-the-badge) 
+
+
+##### Pre-Release
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/vanstinator/hass-raincloud?color=blue&include_prereleases&label=Pre-release&sort=semver&style=for-the-badge)
+![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/vanstinator/hass-raincloud?label=Pre-release%20date&style=for-the-badge)
+![GitHub Pre-Releases](https://img.shields.io/github/downloads-pre/vanstinator/hass-raincloud/latest/total?color=purple&label=pre-release%20downloads&style=for-the-badge)
 ---
 
 The `raincloud` integration allows you to integrate your [Melnor RainCloud](https://wifiaquatimer.com) sprinkler system in Home Assistant.
