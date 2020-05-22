@@ -2,6 +2,6 @@
   "domain": "raincloud",
   "name": "Melnor RainCloud",
   "documentation": "https://www.home-assistant.io/integrations/raincloud",
-  "requirements": ["raincloudy==0.0.9"],
+  "requirements": ["raincloudy==1.0a1"],
   "codeowners": ["@vanstinator"]
 }

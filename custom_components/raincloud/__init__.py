@@ -3,6 +3,7 @@ from datetime import timedelta
 import logging
 
 from raincloudy.core import RainCloudy
+
 from requests.exceptions import ConnectTimeout, HTTPError
 import voluptuous as vol
 
@@ -140,13 +141,28 @@ class RainCloudEntity(Entity):
         """Initialize the RainCloud entity."""
         self.data = data
         self._sensor_type = sensor_type
-        self._name = f"{self.data.name} {KEY_MAP.get(self._sensor_type)}"
         self._state = None
+
+        if hasattr(self.data, '_faucet'):
+            self._name = f"{self.data._faucet.id}: Zone {self.data.id} {KEY_MAP.get(self._sensor_type)}"
+        else:
+            self._name = f"{self.data.id} {KEY_MAP.get(self._sensor_type)}"
 
     @property
     def name(self):
         """Return the name of the sensor."""
         return self._name
+
+    @property
+    def unique_id(self):
+        """Return the serial combination to create a unique identifier"""
+
+        if hasattr(self.data, '_faucet'):
+            _LOGGER.warning(f"{self.data._faucet.serial}_{self._sensor_type}_{self.data.id}")
+            return f"{self.data._faucet.serial}_{self._sensor_type}_{self.data.id}"
+
+        _LOGGER.error(f"{self.data.id}_{self._sensor_type}")
+        return f"{self.data.serial}_{self._sensor_type}"
 
     async def async_added_to_hass(self):
         """Register callbacks."""
