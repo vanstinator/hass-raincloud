@@ -143,10 +143,13 @@ class RainCloudEntity(Entity):
         self._sensor_type = sensor_type
         self._state = None
 
-        if hasattr(self.data, '_faucet'):
-            self._name = f"{self.data._faucet.id}: Zone {self.data.id} {KEY_MAP.get(self._sensor_type)}"
+        if self.data.name is '':
+            if hasattr(self.data, '_faucet'):
+                self._name = f"{self.data._faucet.id}: Zone {self.data.id} {KEY_MAP.get(self._sensor_type)}"
+            else:
+                self._name = f"{self.data.id} {KEY_MAP.get(self._sensor_type)}"
         else:
-            self._name = f"{self.data.id} {KEY_MAP.get(self._sensor_type)}"
+            self._name = f"{self.data.name} {KEY_MAP.get(self._sensor_type)}"
 
     @property
     def name(self):
