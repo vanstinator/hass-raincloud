@@ -21,6 +21,13 @@
 
 The `raincloud` integration allows you to integrate your [Melnor RainCloud](https://wifiaquatimer.com) sprinkler system in Home Assistant.
 
+## Installation
+The easiest way to install and stay updated with this integration is through the Home Assistant Community Store (HACS)
+
+1. Install HACS https://hacs.xyz/docs/installation/prerequisites
+1. Configure HACS https://hacs.xyz/docs/configuration/start
+1. Add a custom repo in HACS using this url `https://github.com/vanstinator/hass-raincloud`
+1. On your `Integrations` page in HACS you should now see a card for `Melnor Raincloud` Click `Install`. Reboot Home Assistant`.
 
 ## Configuration
 
