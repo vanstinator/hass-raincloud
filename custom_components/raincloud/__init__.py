@@ -161,10 +161,8 @@ class RainCloudEntity(Entity):
         """Return the serial combination to create a unique identifier"""
 
         if hasattr(self.data, '_faucet'):
-            _LOGGER.warning(f"{self.data._faucet.serial}_{self._sensor_type}_{self.data.id}")
             return f"{self.data._faucet.serial}_{self._sensor_type}_{self.data.id}"
 
-        _LOGGER.error(f"{self.data.id}_{self._sensor_type}")
         return f"{self.data.serial}_{self._sensor_type}"
 
     async def async_added_to_hass(self):
