@@ -2,6 +2,6 @@
   "domain": "raincloud",
   "name": "Melnor RainCloud",
   "documentation": "https://github.com/vanstinator/hass-raincloud/blob/master/README.md",
-  "requirements": ["raincloudy==1.0.0"],
+  "requirements": ["raincloudy==1.1.1"],
   "codeowners": ["@vanstinator"]
 }
