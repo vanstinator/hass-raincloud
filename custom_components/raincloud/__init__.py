@@ -75,7 +75,7 @@ SENSORS = ["battery", "next_cycle", "rain_delay", "watering_time"]
 
 SWITCHES = ["auto_watering", "manual_watering"]
 
-SCAN_INTERVAL = timedelta(seconds=20)
+SCAN_INTERVAL = timedelta(seconds=10)
 
 SIGNAL_UPDATE_RAINCLOUD = "raincloud_update"
 
