@@ -11,7 +11,6 @@ jobs:
       # Build
       - name: Build the file
         run: |
-          sudo apt install zip
           cd /home/runner/work/hass-raincloud/custom_component/raincloud
           zip -r raincloud.zip *
       # Upload build file to the release as an asset
