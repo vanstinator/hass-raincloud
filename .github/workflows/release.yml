@@ -20,6 +20,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/hass-raincloud/hass-raincloud/custom_components/raincloud/raincloud.zip
-          asset_name: sprinkler-card.js
+          asset_name: raincloud.zip
           tag: ${{ github.ref }}d
           overwrite: true
