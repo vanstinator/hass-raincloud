@@ -11,6 +11,7 @@ jobs:
       # Build
       - name: Build the file
         run: |
+          ls /home/runner/work/
           cd /home/runner/work/hass-raincloud/custom_components/raincloud
           zip -r raincloud.zip *
       # Upload build file to the release as an asset
