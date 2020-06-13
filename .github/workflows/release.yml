@@ -19,7 +19,7 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/hass-raincloud/hass-raincloud/custom_component/raincloud/raincloud.zip
+          file: /home/runner/work/hass-raincloud/hass-raincloud/custom_components/raincloud/raincloud.zip
           asset_name: sprinkler-card.js
           tag: ${{ github.ref }}d
           overwrite: true
