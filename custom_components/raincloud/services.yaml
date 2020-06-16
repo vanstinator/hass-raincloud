@@ -1,0 +1,6 @@
+rain_delay:
+  description: Sets the rain delay for the specified number of days.
+  fields:
+    days:
+      description: Number of days to skip watering. Max is 7 (Melnor Limitation)
+      example: 1
