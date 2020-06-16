@@ -75,6 +75,10 @@ SENSORS = ["battery", "next_cycle", "rain_delay", "watering_time"]
 
 SWITCHES = ["auto_watering", "manual_watering"]
 
+RAIN_DELAY_SERVICE_ATTR = "rain_delay"
+
+RAIN_DELAY_DAYS_ATTR = 'days'
+
 SCAN_INTERVAL = timedelta(seconds=10)
 
 SIGNAL_UPDATE_RAINCLOUD = "raincloud_update"
@@ -113,6 +117,24 @@ def setup(hass, config):
             notification_id=NOTIFICATION_ID,
         )
         return False
+
+
+    def handle_rain_delay(call):
+        """Set the rain delay for all valves"""
+
+        days = call.data.get(RAIN_DELAY_DAYS_ATTR, 0)
+
+        for controller in hass.data[DATA_RAINCLOUD].data.controllers:
+            for faucet in controller.faucets:
+                for zone in faucet.zones:
+                    zone.rain_delay = days
+
+        hass.data[DATA_RAINCLOUD].data.update()
+        dispatcher_send(hass, SIGNAL_UPDATE_RAINCLOUD)
+
+        return True
+    
+    hass.services.register(DOMAIN, RAIN_DELAY_SERVICE_ATTR, handle_rain_delay)
 
     def hub_refresh(event_time):
         """Call Raincloud hub to refresh information."""
