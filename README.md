@@ -24,6 +24,9 @@ The easiest way to install and stay updated with this integration is through the
 1. Add a custom repo in HACS using this url `https://github.com/vanstinator/hass-raincloud`
 1. On your `Integrations` page in HACS you should now see a card for `Melnor Raincloud` Click `Install`. Reboot Home Assistant`.
 
+## Scheduling in Home Assistant
+The raincloud scheduler is powerful but the UI isn't the greatest. I've been using and highly recommend this combination of lovelace card and custom component to build my watering schedules https://community.home-assistant.io/t/scheduler-card-custom-component/217458
+
 ## Configuration
 
 To enable it the component add the following to your `configuration.yaml` file:
