@@ -39,7 +39,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
                     for zone in faucet.zones:
                         sensors.append(RainCloudSensor(zone, sensor_type))
 
-
     add_entities(sensors, True)
     return True
 
@@ -68,3 +67,13 @@ class RainCloudSensor(RainCloudEntity):
                 battery_level=int(self._state), charging=False
             )
         return ICON_MAP.get(self._sensor_type)
+
+    @property
+    def device_class(self):
+        if self._sensor_type == "battery":
+            return "battery"
+
+    @property
+    def state_class(self):
+        if self._sensor_type == "battery":
+            return "measurement"
