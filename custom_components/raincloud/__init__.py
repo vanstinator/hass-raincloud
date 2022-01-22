@@ -118,7 +118,6 @@ def setup(hass, config):
         )
         return False
 
-
     def handle_rain_delay(call):
         """Set the rain delay for all valves"""
 
@@ -133,7 +132,7 @@ def setup(hass, config):
         dispatcher_send(hass, SIGNAL_UPDATE_RAINCLOUD)
 
         return True
-    
+
     hass.services.register(DOMAIN, RAIN_DELAY_SERVICE_ATTR, handle_rain_delay)
 
     def hub_refresh(event_time):
@@ -205,7 +204,7 @@ class RainCloudEntity(Entity):
         return UNIT_OF_MEASUREMENT_MAP.get(self._sensor_type)
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         return {ATTR_ATTRIBUTION: ATTRIBUTION, "identifier": self.data.serial}
 

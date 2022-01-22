@@ -42,7 +42,8 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         for controller in raincloud.controllers:
             for faucet in controller.faucets:
                 for zone in faucet.zones:
-                    sensors.append(RainCloudSwitch(default_watering_timer, zone, sensor_type))
+                    sensors.append(RainCloudSwitch(
+                        default_watering_timer, zone, sensor_type))
 
     add_entities(sensors, True)
 
@@ -85,7 +86,7 @@ class RainCloudSwitch(RainCloudEntity, SwitchEntity):
             self._state = self.data.auto_watering
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         return {
             ATTR_ATTRIBUTION: ATTRIBUTION,

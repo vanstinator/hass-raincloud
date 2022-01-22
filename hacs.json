@@ -2,7 +2,7 @@
   "name": "Melnor Raincloud",
   "render_readme": true,
   "domains": ["binary_sensor", "sensor", "switch"],
-  "homeassistant": "0.115.0",
+  "homeassistant": "2021.4.0",
   "zip_release": true,
   "filename": "raincloud.zip",
   "iot_class": "cloud_polling"
